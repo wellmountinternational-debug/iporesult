@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IPO News & Analysis 2025 – Latest IPO Updates | iporesult.in</title>
+<meta name="description" content="Latest IPO news, analysis and updates for Indian investors. Read about upcoming IPOs, SEBI regulations, allotment results and market trends."/>
+<meta name="keywords" content="IPO news 2025, IPO analysis, SEBI IPO, upcoming IPO news India, IPO market update, IPO blog"/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://iporesult.in/news.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="mstrip"><div class="mstrip-inner" id="stripInner"></div></div>
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<nav class="drawer" id="drawer">
+  <div class="drawer-hd"><a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a><button class="drawer-close" onclick="closeDrawer()">✕</button></div>
+  <div class="drawer-nav">
+    <a href="index.html">🏠 Home</a><a href="upcoming-ipo.html">📅 Upcoming IPO</a>
+    <a href="ipo-gmp.html">📈 IPO GMP</a><a href="allotment.html">🎯 Allotment Status</a>
+    <a href="subscription.html">📊 Subscription</a><div class="d-div"></div><a href="news.html">📰 IPO News</a>
+  </div>
+</nav>
+<header><nav class="navbar">
+  <a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="upcoming-ipo.html">Upcoming IPO</a></li>
+    <li><a href="ipo-gmp.html">IPO GMP</a></li><li><a href="allotment.html">Allotment</a></li>
+    <li><a href="subscription.html">Subscription</a></li><li><a href="news.html">News</a></li>
+  </ul>
+  <button class="hamburger" onclick="openDrawer()"><span></span><span></span><span></span></button>
+</nav></header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>IPO News</div>
+    <h1>IPO News <span class="grad">& Analysis</span></h1>
+    <p>Latest IPO news, SEBI updates, allotment results and market analysis for Indian investors.</p>
+  </div>
+  <div class="filters">
+    <input class="fi" type="search" id="newsSearch" placeholder="🔍 Search articles…" oninput="applyFilters()"/>
+    <div class="cat-pills">
+      <button class="pill active" onclick="filterByCat('',this)">All</button>
+      <button class="pill" onclick="filterByCat('Analysis',this)">📈 Analysis</button>
+      <button class="pill" onclick="filterByCat('News',this)">📰 News</button>
+      <button class="pill" onclick="filterByCat('Upcoming',this)">📅 Upcoming</button>
+      <button class="pill" onclick="filterByCat('Policy',this)">⚖️ SEBI / Policy</button>
+      <button class="pill" onclick="filterByCat('Market',this)">📊 Market</button>
+    </div>
+  </div>
+  <div class="section">
+    <div class="news-layout">
+      <div>
+        <div id="featuredBox"></div>
+        <div class="blog-grid" id="newsGrid">
+          <div class="sk" style="height:280px;border-radius:12px"></div>
+          <div class="sk" style="height:280px;border-radius:12px"></div>
+          <div class="sk" style="height:280px;border-radius:12px"></div>
+        </div>
+      </div>
+      <aside class="sidebar">
+        <div class="side-box">
+          <h4>🔥 Trending</h4>
+          <ul class="side-list" id="trendingList"><li><div class="sk" style="height:12px;margin-bottom:6px"></div></li><li><div class="sk" style="height:12px;margin-bottom:6px"></div></li></ul>
+        </div>
+        <div class="side-box">
+          <h4>⚡ Quick Links</h4>
+          <ul class="side-list">
+            <li><a href="upcoming-ipo.html">📅 Upcoming IPOs 2025</a></li>
+            <li><a href="ipo-gmp.html">📈 Today's GMP</a></li>
+            <li><a href="allotment.html">🎯 Check Allotment</a></li>
+            <li><a href="subscription.html">📊 Subscription Data</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a><p>Latest IPO news, analysis and updates. Powered by live Google Sheets data.</p></div>
+    <div class="fc"><h4>Pages</h4><ul><li><a href="upcoming-ipo.html">Upcoming IPO</a></li><li><a href="ipo-gmp.html">IPO GMP</a></li><li><a href="allotment.html">Allotment</a></li><li><a href="subscription.html">Subscription</a></li><li><a href="news.html">News</a></li></ul></div>
+    <div class="fc"><h4>Resources</h4><ul><li><a href="#">How to Apply</a></li><li><a href="#">IPO Glossary</a></li></ul></div>
+    <div class="fc"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bot"><p>© 2025 iporesult.in — All Rights Reserved.</p><p>Made for Indian investors ❤️</p></div>
+</footer>
+<nav class="bnav"><div class="bnav-inner">
+  <a href="index.html" class="bn"><span class="bn-ic">🏠</span>Home</a>
+  <a href="upcoming-ipo.html" class="bn"><span class="bn-ic">📅</span>Upcoming</a>
+  <a href="ipo-gmp.html" class="bn"><span class="bn-ic">📈</span>GMP</a>
+  <a href="allotment.html" class="bn"><span class="bn-ic">🎯</span>Allotment</a>
+  <a href="subscription.html" class="bn"><span class="bn-ic">📊</span>Sub Data</a>
+</div></nav>
+<script src="config.js"></script>
+<script>
+var _news=[],_activeCat='';
+function renderFeatured(a){
+  var box=document.getElementById('featuredBox');
+  if(!a){box.innerHTML='';return;}
+  var cat=a.category||'News',cc=CAT_COLORS[cat]||{bg:'rgba(79,110,247,.85)',text:'#fff'},icon=NEWS_ICONS[cat]||NEWS_ICONS.Default,link=a.slug?'/blog/'+e(a.slug):'#';
+  box.innerHTML='<div class="featured"><div class="featured-img">'+(a.image_url?'<img src="'+e(a.image_url)+'" alt="'+e(a.title)+'" loading="lazy"/>':'<div style="font-size:60px">'+icon+'</div>')+'<span class="blog-cat-badge" style="background:'+cc.bg+';color:'+cc.text+'">'+e(cat)+'</span></div><div class="featured-body"><span class="feat-cat" style="background:rgba(79,110,247,.12);color:var(--accent)">Featured</span><h2><a href="'+link+'">'+e(a.title)+'</a></h2><p>'+e(a.excerpt||'')+'</p><div style="font-size:11px;color:var(--text3)">'+e(a.date||'')+(a.author?' · '+e(a.author):'')+'</div><a href="'+link+'" class="read-more">Read Full Article →</a></div></div>';
+}
+function renderTrending(rows){
+  var list=document.getElementById('trendingList');
+  if(!rows||!rows.length){list.innerHTML='<li style="color:var(--text3);font-size:12px">No articles yet.</li>';return;}
+  list.innerHTML=rows.slice(0,5).map(function(r){return '<li><a href="'+(r.slug?'/blog/'+e(r.slug):'#')+'">'+e(r.title)+'</a><div class="side-meta">'+e(r.date||'')+'</div></li>';}).join('');
+}
+function applyFilters(){
+  var q=(document.getElementById('newsSearch').value||'').toLowerCase();
+  var res=_news.filter(function(r){return(!q||(r.title||'').toLowerCase().includes(q))&&(!_activeCat||(r.category||'').toLowerCase()===_activeCat.toLowerCase());});
+  renderFeatured(res[0]||null);renderNewsGrid(res.slice(1),'newsGrid');
+}
+function filterByCat(cat,btn){_activeCat=cat;document.querySelectorAll('.pill').forEach(function(p){p.classList.remove('active');});btn.classList.add('active');applyFilters();}
+window.addEventListener('load',function(){
+  buildMarketStrip('IPO News','Latest');
+  gasGet('getNews').then(function(data){_news=Array.isArray(data)?data:[];renderFeatured(_news[0]||null);renderNewsGrid(_news.slice(1),'newsGrid');renderTrending(_news);});
+});
+</script>
+</body></html>

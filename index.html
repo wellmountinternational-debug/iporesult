@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IPO Result | GMP, Allotment Status, Subscription – iporesult.in</title>
+<meta name="description" content="Track IPO allotment status, GMP, subscription data and upcoming IPOs. India's trusted IPO portal."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://iporesult.in/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="mstrip"><div class="mstrip-inner" id="stripInner"></div></div>
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<nav class="drawer" id="drawer">
+  <div class="drawer-hd">
+    <a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="upcoming-ipo.html">📅 Upcoming IPO</a>
+    <a href="ipo-gmp.html">📈 IPO GMP</a>
+    <a href="allotment.html">🎯 Allotment Status</a>
+    <a href="subscription.html">📊 Subscription</a>
+    <div class="d-div"></div>
+    <a href="news.html">📰 IPO News</a>
+  </div>
+</nav>
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="upcoming-ipo.html">Upcoming IPO</a></li>
+      <li><a href="ipo-gmp.html">IPO GMP</a></li>
+      <li><a href="allotment.html">Allotment</a></li>
+      <li><a href="subscription.html">Subscription</a></li>
+      <li><a href="news.html">News</a></li>
+    </ul>
+    <button class="hamburger" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<main id="home">
+  <section class="hero">
+    <div class="live-badge">Live IPO Data</div>
+    <h1>India's Trusted<br><span class="grad">IPO Portal</span></h1>
+    <p>Track IPO GMP, allotment status, subscription data and upcoming listings — updated live.</p>
+    <div class="hero-search">
+      <input type="search" id="searchBox" placeholder="Search IPO by company name…" onkeydown="if(event.key==='Enter')doSearch()"/>
+      <button onclick="doSearch()">Search</button>
+    </div>
+  </section>
+  <div class="stats" id="statsBar">
+    <div class="stat"><div class="stat-l">IPOs in 2025</div><div class="stat-v" style="color:var(--accent)" id="s0">—</div><div class="stat-s" id="ss0">Loading…</div></div>
+    <div class="stat"><div class="stat-l">Currently Open</div><div class="stat-v up" id="s1">—</div><div class="stat-s" id="ss1">Loading…</div></div>
+    <div class="stat"><div class="stat-l">Upcoming (30d)</div><div class="stat-v" style="color:var(--orange)" id="s2">—</div><div class="stat-s" id="ss2">Loading…</div></div>
+    <div class="stat"><div class="stat-l">Avg. Listing Gain</div><div class="stat-v up">+24.6%</div><div class="stat-s">YTD average</div></div>
+  </div>
+  <div class="ticker-wrap"><div class="ticker" id="ticker">Loading GMP data…</div></div>
+  <div class="notice"><div class="notice-inner">⚠️ GMP (Grey Market Premium) is unofficial and for reference only. Always verify allotment on official registrar sites.</div></div>
+  <section class="section" id="open-ipos">
+    <div class="sec-hd"><h2 class="sec-title">Open IPOs</h2><a href="upcoming-ipo.html" class="see-all">View All →</a></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Company</th><th>Price Band</th><th>Open</th><th>Close</th><th>GMP</th><th>Subscription</th><th>Status</th></tr></thead>
+      <tbody id="openBody"><tr><td colspan="7" class="no-data"><div class="sk" style="height:14px;width:60%;margin:0 auto"></div></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="section" id="upcoming">
+    <div class="sec-hd"><h2 class="sec-title">Upcoming IPOs</h2><a href="upcoming-ipo.html" class="see-all">View All →</a></div>
+    <div class="cards-grid" id="upcomingGrid">
+      <div class="sk" style="height:240px;border-radius:12px"></div>
+      <div class="sk" style="height:240px;border-radius:12px"></div>
+      <div class="sk" style="height:240px;border-radius:12px"></div>
+    </div>
+  </section>
+  <section class="section" id="gmp">
+    <div class="sec-hd"><h2 class="sec-title">IPO GMP Today</h2><a href="ipo-gmp.html" class="see-all">View All →</a></div>
+    <div class="gmp-grid" id="gmpGrid">
+      <div class="sk" style="height:100px;border-radius:12px"></div>
+      <div class="sk" style="height:100px;border-radius:12px"></div>
+      <div class="sk" style="height:100px;border-radius:12px"></div>
+      <div class="sk" style="height:100px;border-radius:12px"></div>
+    </div>
+  </section>
+  <section class="section" id="allotment">
+    <div class="sec-hd"><h2 class="sec-title">Allotment Status</h2><a href="allotment.html" class="see-all">Full Checker →</a></div>
+    <div class="checker">
+      <h2>🎯 Check Your IPO Allotment</h2>
+      <p>Select the IPO and enter your details to check allotment status.</p>
+      <div class="form-row">
+        <div class="fg"><label>Select IPO</label><select id="allotIPO"><option value="">— Loading… —</option></select></div>
+        <div class="fg"><label>Check By</label><select id="allotBy" onchange="toggleAllotField(this.value)"><option value="pan">PAN Number</option><option value="app">Application Number</option><option value="dp">DP / Client ID</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label id="fieldLabel">PAN Number</label><input type="text" id="fieldVal" placeholder="Enter PAN (e.g. ABCDE1234F)" maxlength="10"/></div>
+        <div class="fg"><label>Captcha</label><input type="text" placeholder="Enter captcha"/></div>
+      </div>
+      <button class="btn-primary" onclick="checkAllotment()">Check Allotment Status →</button>
+      <div class="result-box" id="allotResult"></div>
+    </div>
+  </section>
+  <section class="section" id="subscription">
+    <div class="sec-hd"><h2 class="sec-title">Subscription Data</h2><a href="subscription.html" class="see-all">View All →</a></div>
+    <div class="tabs">
+      <button class="tab active" onclick="setSubTab(this,1)">Day 1</button>
+      <button class="tab" onclick="setSubTab(this,2)">Day 2</button>
+      <button class="tab" onclick="setSubTab(this,3)">Day 3 (Final)</button>
+      <button class="tab" onclick="setSubTab(this,'all')">Overall</button>
+    </div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>#</th><th>Company</th><th>QIB</th><th>NII (HNI)</th><th>RII (Retail)</th><th>Employee</th><th>Total</th><th>Issue Size</th></tr></thead>
+      <tbody id="subBody"><tr><td colspan="8" class="no-data"><div class="sk" style="height:14px;width:60%;margin:0 auto"></div></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="section" id="news">
+    <div class="sec-hd"><h2 class="sec-title">IPO News & Analysis</h2><a href="news.html" class="see-all">All Articles →</a></div>
+    <div class="blog-grid" id="newsGrid">
+      <div class="sk" style="height:260px;border-radius:12px"></div>
+      <div class="sk" style="height:260px;border-radius:12px"></div>
+      <div class="sk" style="height:260px;border-radius:12px"></div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a>
+      <p>India's trusted portal for IPO GMP, allotment status, subscription data and upcoming IPO news.</p>
+    </div>
+    <div class="fc"><h4>Quick Links</h4><ul>
+      <li><a href="upcoming-ipo.html">Upcoming IPO</a></li>
+      <li><a href="ipo-gmp.html">IPO GMP Today</a></li>
+      <li><a href="allotment.html">Allotment Status</a></li>
+      <li><a href="subscription.html">Subscription</a></li>
+      <li><a href="news.html">IPO News</a></li>
+    </ul></div>
+    <div class="fc"><h4>Resources</h4><ul>
+      <li><a href="#">How to Apply</a></li>
+      <li><a href="#">IPO Glossary</a></li>
+      <li><a href="#">SME IPOs</a></li>
+      <li><a href="#">Listed IPOs 2025</a></li>
+    </ul></div>
+    <div class="fc"><h4>Company</h4><ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Disclaimer</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bot">
+    <p>© 2025 iporesult.in — Not SEBI registered. Data for reference only.</p>
+    <p>Made for Indian investors ❤️</p>
+  </div>
+</footer>
+<nav class="bnav"><div class="bnav-inner">
+  <a href="index.html" class="bn"><span class="bn-ic">🏠</span>Home</a>
+  <a href="upcoming-ipo.html" class="bn"><span class="bn-ic">📅</span>Upcoming</a>
+  <a href="ipo-gmp.html" class="bn"><span class="bn-ic">📈</span>GMP</a>
+  <a href="allotment.html" class="bn"><span class="bn-ic">🎯</span>Allotment</a>
+  <a href="subscription.html" class="bn"><span class="bn-ic">📊</span>Sub Data</a>
+</div></nav>
+<script src="config.js"></script>
+<script>
+var _open=[],_upcoming=[],_subs=[];
+function doSearch(){var q=(document.getElementById('searchBox').value||'').trim().toLowerCase();if(!q)return;var hits=_open.concat(_upcoming).filter(function(r){return r.name&&r.name.toLowerCase().includes(q);});if(hits.length){document.getElementById('open-ipos').scrollIntoView({behavior:'smooth'});renderOpenTable(hits);}else alert('No IPO found for "'+q+'".');}
+function checkAllotment(){var ipo=document.getElementById('allotIPO').value,by=document.getElementById('allotBy').value,val=document.getElementById('fieldVal').value.trim().toUpperCase();if(!ipo)return showMsg('allotResult','warn','⚠️ Please select an IPO.');if(!val)return showMsg('allotResult','warn','⚠️ Please enter your '+by.toUpperCase()+'.');if(by==='pan'&&!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(val))return showMsg('allotResult','error','❌ Invalid PAN. Format: ABCDE1234F');showMsg('allotResult','loading','Checking for <strong>'+e(ipo)+'</strong>…');setTimeout(function(){showMsg('allotResult','info','<strong>🎯 '+e(ipo)+'</strong><br><br>Check on official registrar:<br><a href="https://ipostatus.kfintech.com/" target="_blank" style="color:var(--accent);font-weight:600">→ KFin Technologies</a> &nbsp; <a href="https://linkintime.co.in/mwal00/client.html" target="_blank" style="color:var(--accent);font-weight:600">→ Link Intime</a>');},700);}
+function setSubTab(btn,day){document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');var rows=day==='all'?_subs:_subs.filter(function(r){return String(r.day)===String(day);});renderSubTable(rows);}
+window.addEventListener('load',function(){
+  buildMarketStrip('Live Data','iporesult.in');
+  Promise.all([gasGet('getOpenIPOs'),gasGet('getUpcoming'),gasGet('getGMP'),gasGet('getSubs'),gasGet('getNews')]).then(function(res){
+    _open=res[0]||[];_upcoming=res[1]||[];var gmp=res[2]||[];_subs=res[3]||[];var news=res[4]||[];
+    renderOpenTable(_open);renderUpcomingCards(_upcoming);renderGMPGrid(gmp);renderTicker(gmp);
+    renderSubTable(_subs.filter(function(r){return String(r.day)==='1';}));renderNewsGrid(news,'newsGrid',3);
+    document.getElementById('s0').textContent=312;document.getElementById('ss0').textContent='Total listings this year';
+    document.getElementById('s1').textContent=_open.length;document.getElementById('ss1').textContent='Accept applications';
+    document.getElementById('s2').textContent=_upcoming.length;document.getElementById('ss2').textContent='Expected IPOs';
+    buildMarketStrip('IPOs Open',_open.length+' Active');
+  });
+});
+</script>
+</body>
+</html>

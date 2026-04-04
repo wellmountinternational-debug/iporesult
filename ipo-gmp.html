@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IPO GMP Today 2025 – Grey Market Premium Live | iporesult.in</title>
+<meta name="description" content="Live IPO Grey Market Premium (GMP) data. Check today's GMP, Kostak rate and estimated listing price for all active IPOs."/>
+<meta name="keywords" content="IPO GMP today, grey market premium, IPO GMP 2025, Kostak rate, IPO listing price estimate"/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://iporesult.in/ipo-gmp.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="mstrip"><div class="mstrip-inner" id="stripInner"></div></div>
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<nav class="drawer" id="drawer">
+  <div class="drawer-hd"><a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a><button class="drawer-close" onclick="closeDrawer()">✕</button></div>
+  <div class="drawer-nav">
+    <a href="index.html">🏠 Home</a><a href="upcoming-ipo.html">📅 Upcoming IPO</a>
+    <a href="ipo-gmp.html">📈 IPO GMP</a><a href="allotment.html">🎯 Allotment Status</a>
+    <a href="subscription.html">📊 Subscription</a><div class="d-div"></div><a href="news.html">📰 IPO News</a>
+  </div>
+</nav>
+<header><nav class="navbar">
+  <a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="upcoming-ipo.html">Upcoming IPO</a></li>
+    <li><a href="ipo-gmp.html">IPO GMP</a></li><li><a href="allotment.html">Allotment</a></li>
+    <li><a href="subscription.html">Subscription</a></li><li><a href="news.html">News</a></li>
+  </ul>
+  <button class="hamburger" onclick="openDrawer()"><span></span><span></span><span></span></button>
+</nav></header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>IPO GMP</div>
+    <h1>IPO GMP <span class="grad">Today 2025</span></h1>
+    <p>Live Grey Market Premium (GMP) for all active and upcoming IPOs. Updated daily from our database.</p>
+  </div>
+  <div class="notice"><div class="notice-inner">⚠️ GMP is <strong>unofficial and unregulated</strong>. It is only an informal indicator. Do not base your IPO application solely on GMP.</div></div>
+  <div class="section">
+    <div class="summary-row">
+      <div class="sum-card"><div class="sum-l">Total IPOs</div><div class="sum-v" style="color:var(--accent)" id="totalCount">—</div><div class="sum-s">With GMP data</div></div>
+      <div class="sum-card"><div class="sum-l">Positive GMP</div><div class="sum-v up" id="posCount">—</div><div class="sum-s">Expected listing gain</div></div>
+      <div class="sum-card"><div class="sum-l">Negative GMP</div><div class="sum-v dn" id="negCount">—</div><div class="sum-s">Below issue price</div></div>
+      <div class="sum-card"><div class="sum-l">Highest GMP</div><div class="sum-v gp" id="highGMP">—</div><div class="sum-s" id="highCo">—</div></div>
+    </div>
+    <div class="explain">
+      <h3>📖 What is GMP?</h3>
+      <div class="explain-grid">
+        <div class="exp-item"><div class="exp-term">GMP</div><div class="exp-def">Price at which IPO shares trade in the unofficial grey market before listing on BSE/NSE.</div></div>
+        <div class="exp-item"><div class="exp-term">Kostak Rate</div><div class="exp-def">Amount paid for an entire IPO application, regardless of whether you get allotment.</div></div>
+        <div class="exp-item"><div class="exp-term">Est. Listing</div><div class="exp-def">Issue Price + GMP = Estimated Listing Price. Informal estimate — actual listing may differ.</div></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+      <input class="fi" type="search" id="gmpSearch" placeholder="🔍 Search company…" oninput="filterGMP()"/>
+      <select class="fi" id="gmpFilter" onchange="filterGMP()">
+        <option value="">All IPOs</option><option value="positive">Positive GMP only</option><option value="negative">Negative GMP only</option>
+      </select>
+    </div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>#</th><th>Company</th><th>Issue Price</th><th>GMP</th><th>Est. Listing</th><th>% Gain</th><th>Kostak</th><th>Signal</th><th>Updated</th></tr></thead>
+      <tbody id="gmpBody"><tr><td colspan="9" class="no-data"><div class="sk" style="height:14px;width:50%;margin:0 auto"></div></td></tr></tbody>
+    </table></div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="logo"><span>IPO</span><span class="logo-badge">Result</span></a><p>Live IPO GMP, allotment and subscription data for Indian investors.</p></div>
+    <div class="fc"><h4>Pages</h4><ul><li><a href="upcoming-ipo.html">Upcoming IPO</a></li><li><a href="ipo-gmp.html">IPO GMP</a></li><li><a href="allotment.html">Allotment</a></li><li><a href="subscription.html">Subscription</a></li><li><a href="news.html">News</a></li></ul></div>
+    <div class="fc"><h4>Resources</h4><ul><li><a href="#">How to Apply</a></li><li><a href="#">IPO Glossary</a></li></ul></div>
+    <div class="fc"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bot"><p>© 2025 iporesult.in — GMP data is unofficial and for reference only.</p><p>Made for Indian investors ❤️</p></div>
+</footer>
+<nav class="bnav"><div class="bnav-inner">
+  <a href="index.html" class="bn"><span class="bn-ic">🏠</span>Home</a>
+  <a href="upcoming-ipo.html" class="bn"><span class="bn-ic">📅</span>Upcoming</a>
+  <a href="ipo-gmp.html" class="bn active"><span class="bn-ic">📈</span>GMP</a>
+  <a href="allotment.html" class="bn"><span class="bn-ic">🎯</span>Allotment</a>
+  <a href="subscription.html" class="bn"><span class="bn-ic">📊</span>Sub Data</a>
+</div></nav>
+<script src="config.js"></script>
+<script>
+var _all=[];
+function renderGMPTable(rows){
+  var body=document.getElementById('gmpBody');
+  if(!rows.length){body.innerHTML='<tr><td colspan="9" class="no-data">No GMP data. Add rows to the GMP sheet tab.</td></tr>';return;}
+  var pos=rows.filter(function(r){return parseFloat(r.gmp)>0;}).length;
+  var neg=rows.filter(function(r){return parseFloat(r.gmp)<0;}).length;
+  var top=rows.slice().sort(function(a,b){return parseFloat(b.gmp)-parseFloat(a.gmp);})[0];
+  document.getElementById('totalCount').textContent=rows.length;
+  document.getElementById('posCount').textContent=pos;
+  document.getElementById('negCount').textContent=neg;
+  document.getElementById('highGMP').textContent=(parseFloat(top.gmp)>=0?'+':'')+'₹'+top.gmp;
+  document.getElementById('highCo').textContent=top.company||'—';
+  body.innerHTML=rows.map(function(r,i){
+    var gmp=parseFloat(r.gmp)||0,ip=parseFloat((r.ipo_price||'').toString().replace(/[^\d.]/g,''))||0,est=parseFloat(r.estimated_listing)||0;
+    var pct=ip>0?((gmp/ip)*100).toFixed(1):null;
+    var absP=Math.min(100,Math.abs(pct||0));
+    var sig=gmp>30?'🔥 Strong':gmp>10?'✅ Good':gmp>0?'🟡 Mild':gmp<0?'🔴 Weak':'—';
+    return '<tr><td style="color:var(--text3)">'+(i+1)+'</td><td class="tbl-name">'+e(r.company)+'</td><td>₹'+e(r.ipo_price||'—')+'</td><td class="'+(gmp>=0?'gp':'gn')+'">'+(gmp>=0?'+':'')+'₹'+gmp+'</td><td>'+(est?'₹'+est:'—')+'</td><td>'+(pct?'<span class="'+(gmp>=0?'gp':'gn')+'">'+(gmp>=0?'+':'')+pct+'%</span><span class="pct-bar"><span class="pct-fill" style="width:'+absP+'%;background:'+(gmp>=0?'var(--green)':'var(--red)')+'"></span></span>':'—')+'</td><td>'+e(r.kostak?'₹'+r.kostak:'—')+'</td><td>'+sig+'</td><td style="color:var(--text3);font-size:12px">'+e(r.last_updated||'Today')+'</td></tr>';
+  }).join('');
+}
+function filterGMP(){var q=(document.getElementById('gmpSearch').value||'').toLowerCase(),f=document.getElementById('gmpFilter').value;var res=_all.filter(function(r){var nm=(r.company||'').toLowerCase(),gmp=parseFloat(r.gmp)||0;return(!q||nm.includes(q))&&(f==='positive'?gmp>0:f==='negative'?gmp<0:true);});renderGMPTable(res);}
+window.addEventListener('load',function(){
+  buildMarketStrip('GMP Updated','Live');
+  gasGet('getGMP').then(function(data){_all=Array.isArray(data)?data:[];renderGMPTable(_all);renderTicker(_all);});
+});
+</script>
+</body></html>
