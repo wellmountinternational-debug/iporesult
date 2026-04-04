@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IPO Subscription Data 2025 – QIB NII RII Live | iporesult.in</title>
+<meta name="description" content="Live IPO subscription data for QIB, NII (HNI) and RII (Retail) categories. Day-wise subscription figures for all open and upcoming IPOs in 2025."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://iporesult.in/subscription.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Subscription</div>
+    <h1>IPO <span class="grad">Subscription Data</span></h1>
+    <p>Live day-wise IPO subscription data for QIB, NII (HNI) and RII (Retail) investor categories.</p>
+  </div>
+  <div class="section">
+    <div class="legend">
+      <span class="leg"><span class="leg-dot" style="background:var(--accent)"></span>QIB – Qualified Institutional Buyers</span>
+      <span class="leg"><span class="leg-dot" style="background:var(--green)"></span>NII – Non-Institutional (HNI)</span>
+      <span class="leg"><span class="leg-dot" style="background:var(--orange)"></span>RII – Retail Individual Investors</span>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="setTab(this,1)">Day 1</button>
+      <button class="tab" onclick="setTab(this,2)">Day 2</button>
+      <button class="tab" onclick="setTab(this,3)">Day 3 (Final)</button>
+      <button class="tab" onclick="setTab(this,'all')">All / Overall</button>
+    </div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>#</th><th>Company</th><th>QIB</th><th>NII (HNI)</th><th>RII (Retail)</th><th>Employee</th><th>Total</th><th>Issue Size</th></tr></thead>
+      <tbody id="subBody"><tr><td colspan="8" class="no-data"><div class="sk" style="height:14px;width:50%;margin:0 auto"></div></td></tr></tbody>
+    </table></div>
+    <div class="cat-grid">
+      <div class="cat-card"><span class="cat-badge" style="background:rgba(79,110,247,.12);color:var(--accent)">QIB</span><div class="cat-title">Qualified Institutional Buyers</div><div class="cat-desc">Includes mutual funds, banks, FIIs, insurance companies. Reserved 50% of IPO shares. High QIB subscription indicates strong institutional confidence.</div></div>
+      <div class="cat-card"><span class="cat-badge" style="background:rgba(16,185,129,.12);color:var(--green)">NII / HNI</span><div class="cat-title">Non-Institutional Investors</div><div class="cat-desc">Individuals applying for more than ₹2 lakh. Reserved 15% of IPO shares. High NII subscription often signals strong listing gains expected.</div></div>
+      <div class="cat-card"><span class="cat-badge" style="background:rgba(245,158,11,.12);color:var(--orange)">RII</span><div class="cat-title">Retail Individual Investors</div><div class="cat-desc">Individuals applying up to ₹2 lakh. Reserved 35% of IPO shares. Strong retail subscription reflects public confidence in the company.</div></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="config.js"></script>
+<script>
+
+var _subs=[];
+function setTab(btn,day){document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');var rows=day==='all'?_subs:_subs.filter(function(r){return String(r.day)===String(day);});renderSubTable(rows);}
+document.addEventListener('shellReady',function(){
+  buildMarketStrip('Subscription','Live Data');
+  gasGet('getSubs').then(function(data){_subs=Array.isArray(data)?data:[];var d1=_subs.filter(function(r){return String(r.day)==='1';});renderSubTable(d1.length?d1:_subs);});
+});
+
+</script>
+</body>
+</html>

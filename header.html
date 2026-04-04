@@ -1,0 +1,62 @@
+<!-- ═══════════════════════════════════════════════════════
+     header.html  —  iporesult.in
+     DO NOT add <html>, <head>, or <body> tags here.
+     This file is injected by config.js into every page.
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- MARKET STRIP -->
+<div class="mstrip">
+  <div class="mstrip-inner" id="stripInner">
+    <span class="ms"><span class="ms-l">NIFTY 50</span><span class="ms-v up">22,514 ▲ 0.42%</span></span>
+    <span class="ms"><span class="ms-l">SENSEX</span><span class="ms-v up">74,119 ▲ 0.38%</span></span>
+    <span class="ms"><span class="ms-l">NIFTY BANK</span><span class="ms-v dn">48,220 ▼ 0.12%</span></span>
+    <span class="ms"><span class="ms-l">IPOs Open</span><span class="ms-v" style="color:var(--accent)" id="stripOpenCount">Live</span></span>
+    <span class="ms"><span class="ms-l">NIFTY 50</span><span class="ms-v up">22,514 ▲ 0.42%</span></span>
+    <span class="ms"><span class="ms-l">SENSEX</span><span class="ms-v up">74,119 ▲ 0.38%</span></span>
+    <span class="ms"><span class="ms-l">NIFTY BANK</span><span class="ms-v dn">48,220 ▼ 0.12%</span></span>
+    <span class="ms"><span class="ms-l">IPOs Open</span><span class="ms-v" style="color:var(--accent)">iporesult.in</span></span>
+  </div>
+</div>
+
+<!-- OVERLAY (closes drawer) -->
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<!-- SIDE DRAWER (mobile) -->
+<nav class="drawer" id="drawer" aria-label="Mobile navigation">
+  <div class="drawer-hd">
+    <a href="index.html" class="logo">
+      <span>IPO</span><span class="logo-badge">Result</span>
+    </a>
+    <button class="drawer-close" onclick="closeDrawer()" aria-label="Close menu">✕</button>
+  </div>
+  <div class="drawer-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="upcoming-ipo.html">📅 Upcoming IPO</a>
+    <a href="ipo-gmp.html">📈 IPO GMP</a>
+    <a href="allotment.html">🎯 Allotment Status</a>
+    <a href="subscription.html">📊 Subscription</a>
+    <div class="d-div"></div>
+    <a href="news.html">📰 IPO News</a>
+    <a href="ipo-detail.html">📋 IPO Detail</a>
+  </div>
+</nav>
+
+<!-- TOP NAVBAR -->
+<header>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="IPO Result Home">
+      <span>IPO</span><span class="logo-badge">Result</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="upcoming-ipo.html">Upcoming IPO</a></li>
+      <li><a href="ipo-gmp.html">IPO GMP</a></li>
+      <li><a href="allotment.html">Allotment</a></li>
+      <li><a href="subscription.html">Subscription</a></li>
+      <li><a href="news.html">News</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" onclick="openDrawer()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
