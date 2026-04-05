@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IPO Details – iporesult.in</title>
+<meta name="robots" content="index,follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.dw{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 20px 60px}
+.dbread{padding:16px 0 0;font-size:12px;color:var(--text3);margin-bottom:14px}
+.dbread a{color:var(--text3)}.dbread a:hover{color:var(--accent)}.dbread span{margin:0 5px}
+
+/* HEADER CARD */
+.dhc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.dht{display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap}
+.dlogo{width:90px;height:90px;border-radius:12px;background:#fff;border:2px solid #e2e8f0;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dlogo-i{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--accent)}
+.dhi{flex:1;min-width:200px}
+.dtr{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:8px}
+.dtr h1{font-family:'Syne',sans-serif;font-size:clamp(17px,3vw,26px);font-weight:800;color:var(--text);letter-spacing:-.3px}
+.dsb{padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700}
+.sb-pos{background:rgba(16,185,129,.15);color:var(--green)}
+.sb-neg{background:rgba(239,68,68,.15);color:var(--red)}
+.sb-open{background:rgba(16,185,129,.15);color:var(--green)}
+.sb-up{background:rgba(245,158,11,.15);color:var(--orange)}
+.dsummary{font-size:13.5px;color:var(--text2);line-height:1.8}
+.dsummary strong{color:var(--text)}
+
+/* RECOMMENDATION BOX */
+.drec{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:8px;font-size:13px;font-weight:700;margin-top:10px}
+.rec-sub{background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.25)}
+.rec-avoid{background:rgba(239,68,68,.12);color:var(--red);border:1px solid rgba(239,68,68,.25)}
+.rec-may{background:rgba(245,158,11,.12);color:var(--orange);border:1px solid rgba(245,158,11,.25)}
+.rec-neutral{background:rgba(99,120,255,.1);color:var(--text2);border:1px solid var(--border)}
+
+/* 4 DATE CARDS */
+.ddates{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.ddc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;position:relative;overflow:hidden}
+.ddc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.ddc-icon{font-size:20px;margin-bottom:6px;opacity:.7}
+.ddc-l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;font-weight:600}
+.ddc-v{font-size:14px;font-weight:700;color:var(--accent);font-family:'Syne',sans-serif}
+
+/* MAIN LAYOUT */
+.dmain{display:grid;grid-template-columns:1fr 270px;gap:16px;align-items:start}
+
+/* TABS */
+.dtabs{display:flex;background:var(--card);border:1px solid var(--border);border-radius:10px 10px 0 0;overflow-x:auto;border-bottom:none}
+.dtab{padding:12px 18px;background:none;border:none;border-bottom:3px solid transparent;color:var(--text3);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:.15s}
+.dtab:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.dtab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.dtc{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;padding:20px;margin-bottom:16px}
+
+/* INFO ROWS */
+.dsec{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--text);margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px}
+.d2col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dcol{background:var(--bg2);border-radius:9px;overflow:hidden;border:1px solid var(--border)}
+.dcolhd{font-size:11px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.4px;padding:9px 14px;background:var(--card2);border-bottom:1px solid var(--border)}
+.dr{display:flex;justify-content:space-between;padding:9px 14px;font-size:13px;border-bottom:1px solid var(--border)}
+.dr:last-child{border-bottom:none}
+.dr:nth-child(odd){background:rgba(255,255,255,.012)}
+.dr-l{color:var(--text3)}
+.dr-v{color:var(--text);font-weight:600;text-align:right}
+.dr-v a{color:var(--accent)}.dr-v a:hover{text-decoration:underline}
+
+/* FINANCIALS TABLE */
+.ftbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+.ftbl th{padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);background:var(--bg2)}
+.ftbl td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.ftbl tr:last-child td{border-bottom:none}
+.ftbl tr:hover td{background:rgba(79,110,247,.04)}
+.ftbl td:first-child{color:var(--text);font-weight:500}
+
+/* SUBSCRIPTION BARS */
+.scat{margin-bottom:16px}
+.scat-hd{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+.scat-n{font-weight:600;color:var(--text)}
+.scat-v{font-weight:700;font-size:15px}
+.sbar{height:9px;background:var(--bg2);border-radius:5px;overflow:hidden}
+.sfill{height:100%;border-radius:5px;transition:width .9s ease}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--border)}
+.tli{position:relative;margin-bottom:20px}
+.tld{position:absolute;left:-24px;top:3px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;border:2px solid var(--bg)}
+.tld.done{background:var(--green);color:#fff}
+.tld.now{background:var(--accent);color:#fff;box-shadow:0 0 0 4px rgba(79,110,247,.2)}
+.tld.pend{background:var(--text3);color:#fff}
+.tl-date{font-size:11px;color:var(--text3);margin-bottom:1px}
+.tl-label{font-size:13px;font-weight:600;color:var(--text)}
+.tl-note{font-size:11px;color:var(--text3);margin-top:1px}
+
+/* GMP SECTION */
+.gmp-hero{background:var(--bg2);border-radius:10px;padding:18px;margin-bottom:14px;border:1px solid var(--border);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.gmp-num{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;line-height:1}
+.gmp-sig{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:50px;font-size:12px;font-weight:700}
+.gmp-detail-row{flex:1;min-width:180px}
+.gmp-detail-row p{font-size:13px;color:var(--text2);line-height:1.7}
+
+/* ALLOTMENT */
+.aform select,.aform input{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:11px 13px;border-radius:9px;font-size:14px;outline:none;font-family:'DM Sans',sans-serif;margin-bottom:12px;-webkit-appearance:none;transition:.2s}
+.aform select:focus,.aform input:focus{border-color:var(--accent)}
+.aform input::placeholder{color:var(--text3)}
+.aform label{display:block;font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.3px;margin-bottom:5px}
+.reglinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.rlbtn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:9px;font-size:13px;font-weight:600;border:1px solid var(--border);background:var(--bg2);color:var(--text2);text-decoration:none;transition:.15s;cursor:pointer;font-family:'DM Sans',sans-serif}
+.rlbtn:hover{border-color:var(--accent);color:var(--accent)}
+.rlbtn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff}
+.rlbtn.primary:hover{opacity:.9;color:#fff}
+
+/* PEER COMPARISON */
+.peer-note{font-size:12px;color:var(--text3);margin-bottom:12px;padding:10px 12px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--accent)}
+
+/* SIDEBAR */
+.dsb-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dsb-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text);background:var(--card2)}
+.dsbl{list-style:none;padding:6px 0}
+.dsbl li{border-bottom:1px solid var(--border)}.dsbl li:last-child{border-bottom:none}
+.dsbl a{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;font-size:13px;color:var(--accent);font-weight:500;transition:.15s}
+.dsbl a:hover{background:rgba(79,110,247,.05)}
+.dsbl a span{color:var(--text3);font-size:11px}
+.share-row{display:flex;gap:7px;padding:12px 16px;flex-wrap:wrap}
+.shr{flex:1;min-width:60px;padding:8px 5px;border-radius:7px;border:1px solid var(--border);background:var(--bg2);color:var(--text2);font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center;transition:.15s}
+.shr:hover{border-color:var(--accent);color:var(--accent)}
+
+/* LOADING */
+.dload{text-align:center;padding:70px 20px;color:var(--text3)}
+.dspin{width:42px;height:42px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* NOTICE */
+.gmp-warn{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:9px;padding:12px 14px;font-size:12px;color:var(--orange);margin-top:14px}
+
+/* RESPONSIVE */
+@media(max-width:900px){.dmain{grid-template-columns:1fr}.d2col{grid-template-columns:1fr}}
+@media(max-width:600px){.ddates{grid-template-columns:1fr 1fr}.dht{gap:12px}.dlogo{width:68px;height:68px}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<div class="dw">
+  <div class="dbread" id="dbread">
+    <a href="index.html">Home</a><span>›</span>
+    <a href="upcoming-ipo.html">IPO List</a><span>›</span>
+    <span id="dbname" style="color:var(--text2)">Loading…</span>
+  </div>
+
+  <!-- LOADING -->
+  <div class="dload" id="dload"><div class="dspin"></div><p>Loading IPO details…</p></div>
+
+  <!-- CONTENT -->
+  <div id="dcontent" style="display:none">
+
+    <!-- HEADER CARD -->
+    <div class="dhc">
+      <div class="dht">
+        <div class="dlogo"><div class="dlogo-i" id="dlogoi">—</div></div>
+        <div class="dhi">
+          <div class="dtr">
+            <h1 id="dtitle">—</h1>
+            <span class="dsb" id="dsbadge">—</span>
+          </div>
+          <p class="dsummary" id="dsummary"></p>
+          <div id="drec"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 DATE CARDS -->
+    <div class="ddates">
+      <div class="ddc"><div class="ddc-icon">📅</div><div class="ddc-l">Issue Opening Date</div><div class="ddc-v" id="dc-open">TBA</div></div>
+      <div class="ddc"><div class="ddc-icon">📅</div><div class="ddc-l">Issue Closing Date</div><div class="ddc-v" id="dc-close">TBA</div></div>
+      <div class="ddc"><div class="ddc-icon">💰</div><div class="ddc-l">Price Band</div><div class="ddc-v" id="dc-price">TBA</div></div>
+      <div class="ddc"><div class="ddc-icon">📈</div><div class="ddc-l">Listing Date</div><div class="ddc-v" id="dc-list">TBA</div></div>
+    </div>
+
+    <!-- MAIN 2-COL -->
+    <div class="dmain">
+      <div><!-- LEFT -->
+
+        <!-- TABS -->
+        <div class="dtabs">
+          <button class="dtab active" onclick="dTab('ipo',this)">📋 IPO Details</button>
+          <button class="dtab" onclick="dTab('sub',this)">📊 Subscription</button>
+          <button class="dtab" onclick="dTab('allot',this)">🎯 Allotment</button>
+          <button class="dtab" onclick="dTab('gmp',this)">📈 GMP</button>
+          <button class="dtab" onclick="dTab('fin',this)">💹 Financials</button>
+          <button class="dtab" onclick="dTab('about',this)">🏢 About</button>
+        </div>
+
+        <!-- TAB: IPO DETAILS -->
+        <div class="dtc" id="dt-ipo">
+          <div class="dsec">📋 <span id="dsec-title">IPO Details</span></div>
+          <div class="d2col">
+            <div class="dcol">
+              <div class="dcolhd">Issue Information</div>
+              <div class="dr"><span class="dr-l">IPO Listing At</span><span class="dr-v">BSE &amp; NSE</span></div>
+              <div class="dr"><span class="dr-l">Issue Type</span><span class="dr-v" id="d-issuetype">Book Built Issue</span></div>
+              <div class="dr"><span class="dr-l">Price Band</span><span class="dr-v" id="d-price">—</span></div>
+              <div class="dr"><span class="dr-l">Face Value</span><span class="dr-v" id="d-face">—</span></div>
+              <div class="dr"><span class="dr-l">Issue Size</span><span class="dr-v" id="d-size">—</span></div>
+              <div class="dr"><span class="dr-l">Fresh Issue</span><span class="dr-v" id="d-fresh">—</span></div>
+              <div class="dr"><span class="dr-l">OFS (Offer for Sale)</span><span class="dr-v" id="d-ofs">—</span></div>
+              <div class="dr"><span class="dr-l">Lot Size</span><span class="dr-v" id="d-lot">—</span></div>
+              <div class="dr"><span class="dr-l">Min. Investment (Retail)</span><span class="dr-v" id="d-min">—</span></div>
+              <div class="dr"><span class="dr-l">Min. Investment (HNI)</span><span class="dr-v" id="d-minhni">—</span></div>
+              <div class="dr"><span class="dr-l">Market Cap (Post IPO)</span><span class="dr-v" id="d-mcap">—</span></div>
+              <div class="dr"><span class="dr-l">P/E Ratio</span><span class="dr-v" id="d-pe">—</span></div>
+            </div>
+            <div class="dcol">
+              <div class="dcolhd">Company &amp; Registrar</div>
+              <div class="dr"><span class="dr-l">Category</span><span class="dr-v" id="d-cat">—</span></div>
+              <div class="dr"><span class="dr-l">Sector</span><span class="dr-v" id="d-sector">—</span></div>
+              <div class="dr"><span class="dr-l">Registrar</span><span class="dr-v" id="d-reg">—</span></div>
+              <div class="dr"><span class="dr-l">Lead Manager</span><span class="dr-v" id="d-lead">—</span></div>
+              <div class="dr"><span class="dr-l">BSE Script Code</span><span class="dr-v" id="d-bse">—</span></div>
+              <div class="dr"><span class="dr-l">NSE Symbol</span><span class="dr-v" id="d-nse">—</span></div>
+              <div class="dcolhd" style="margin-top:1px">Important Dates</div>
+              <div class="dr"><span class="dr-l">Open Date</span><span class="dr-v" id="d-open">—</span></div>
+              <div class="dr"><span class="dr-l">Close Date</span><span class="dr-v" id="d-close">—</span></div>
+              <div class="dr"><span class="dr-l">Allotment Date</span><span class="dr-v" id="d-allotd">—</span></div>
+              <div class="dr"><span class="dr-l">Refund Initiation</span><span class="dr-v" id="d-refund">—</span></div>
+              <div class="dr"><span class="dr-l">Demat Credit</span><span class="dr-v" id="d-demat">—</span></div>
+              <div class="dr"><span class="dr-l">Listing Date</span><span class="dr-v" id="d-listd">—</span></div>
+            </div>
+          </div>
+          <!-- DOCUMENTS -->
+          <div style="margin-top:16px">
+            <div class="dcolhd" style="border-radius:8px 8px 0 0">Documents &amp; Links</div>
+            <div style="background:var(--bg2);border-radius:0 0 8px 8px;border:1px solid var(--border);border-top:none">
+              <div class="dr"><span class="dr-l">Allotment Status</span><span class="dr-v"><a href="allotment.html">Check Now ↗</a></span></div>
+              <div class="dr"><span class="dr-l">DRHP (Draft Prospectus)</span><span class="dr-v" id="d-drhp"><span style="color:var(--text3)">—</span></span></div>
+              <div class="dr"><span class="dr-l">RHP (Final Prospectus)</span><span class="dr-v" id="d-rhp"><span style="color:var(--text3)">—</span></span></div>
+            </div>
+          </div>
+          <!-- QUOTA -->
+          <div style="margin-top:16px">
+            <div class="dsec" style="margin-bottom:10px">👥 Investor Category Quota</div>
+            <table class="ftbl">
+              <thead><tr><th>Investor Category</th><th>Quota</th><th>Min. Lots</th><th>Min. Investment</th></tr></thead>
+              <tbody>
+                <tr><td>Retail Individual Investor (RII)</td><td style="color:var(--orange);font-weight:700">35%</td><td id="q-rii-lots">1 Lot</td><td id="q-rii-min">—</td></tr>
+                <tr><td>Non-Institutional (NII / Small HNI)</td><td style="color:var(--green);font-weight:700">15%</td><td id="q-nii-lots">2 Lots</td><td id="q-nii-min">—</td></tr>
+                <tr><td>Non-Institutional (NII / Big HNI)</td><td style="color:var(--green);font-weight:700">15%</td><td id="q-bhni-lots">15 Lots</td><td id="q-bhni-min">—</td></tr>
+                <tr><td>Qualified Institutional Buyer (QIB)</td><td style="color:var(--accent);font-weight:700">50%</td><td>—</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB: SUBSCRIPTION -->
+        <div class="dtc" id="dt-sub" style="display:none">
+          <div class="dsec">📊 Subscription Status</div>
+          <div class="scat"><div class="scat-hd"><span class="scat-n">QIB (Qualified Institutional Buyers)</span><span class="scat-v" id="sq-qib" style="color:var(--accent)">—</span></div><div class="sbar"><div class="sfill" id="sb-qib" style="width:0%;background:var(--accent)"></div></div></div>
+          <div class="scat"><div class="scat-hd"><span class="scat-n">NII / HNI (Non-Institutional Investors)</span><span class="scat-v" id="sq-nii" style="color:var(--green)">—</span></div><div class="sbar"><div class="sfill" id="sb-nii" style="width:0%;background:var(--green)"></div></div></div>
+          <div class="scat"><div class="scat-hd"><span class="scat-n">RII (Retail Individual Investors)</span><span class="scat-v" id="sq-rii" style="color:var(--orange)">—</span></div><div class="sbar"><div class="sfill" id="sb-rii" style="width:0%;background:var(--orange)"></div></div></div>
+          <div class="scat"><div class="scat-hd"><span class="scat-n" style="font-weight:700;color:var(--text)">Overall Total Subscription</span><span class="scat-v" id="sq-tot" style="color:var(--accent);font-size:18px">—</span></div><div class="sbar" style="height:12px"><div class="sfill" id="sb-tot" style="width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2))"></div></div></div>
+          <table class="ftbl" style="margin-top:20px">
+            <thead><tr><th>Day</th><th>QIB</th><th>NII (HNI)</th><th>RII (Retail)</th><th>Employee</th><th>Total</th></tr></thead>
+            <tbody id="subrows"><tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text3)">Loading…</td></tr></tbody>
+          </table>
+        </div>
+
+        <!-- TAB: ALLOTMENT -->
+        <div class="dtc" id="dt-allot" style="display:none">
+          <div class="dsec">🎯 Check Allotment Status</div>
+          <div class="aform" style="max-width:460px">
+            <div><label>Check By</label><select id="allotBy" onchange="toggleAllotField(this.value)"><option value="pan">PAN Number</option><option value="app">Application Number</option><option value="dp">DP / Client ID</option></select></div>
+            <div><label id="fieldLabel">PAN Number</label><input type="text" id="fieldVal" placeholder="Enter PAN (e.g. ABCDE1234F)" maxlength="10"/></div>
+            <button class="btn-primary" onclick="doAllot()">Check Allotment Status →</button>
+            <div class="result-box" id="allotResult"></div>
+          </div>
+          <div style="margin-top:20px">
+            <div style="font-size:11px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Check on Official Registrar</div>
+            <div class="reglinks">
+              <a href="https://ipostatus.kfintech.com/" target="_blank" class="rlbtn primary">🏦 KFin Technologies →</a>
+              <a href="https://linkintime.co.in/mwal00/client.html" target="_blank" class="rlbtn">🏢 Link Intime India →</a>
+            </div>
+          </div>
+          <div style="margin-top:20px;background:var(--bg2);border-radius:10px;padding:16px;border:1px solid var(--border)">
+            <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">How to Check Allotment</div>
+            <ol style="font-size:13px;color:var(--text2);line-height:2.1;padding-left:18px">
+              <li>Select the IPO you applied for from the dropdown</li>
+              <li>Choose PAN Number (most common) or Application Number</li>
+              <li>Enter your details and click <strong>Check Allotment</strong></li>
+              <li>You'll be redirected to the official registrar</li>
+              <li>If allotted, shares are credited to DEMAT on allotment date. Refunds processed within 2 business days.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- TAB: GMP -->
+        <div class="dtc" id="dt-gmp" style="display:none">
+          <div class="dsec">📈 Grey Market Premium (GMP)</div>
+          <div class="gmp-hero">
+            <div>
+              <div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Today's GMP</div>
+              <div class="gmp-num" id="gmp-num">—</div>
+              <div class="gmp-sig" id="gmp-sig" style="margin-top:8px;background:rgba(79,110,247,.1);color:var(--accent)">—</div>
+            </div>
+            <div class="gmp-detail-row">
+              <p id="gmp-desc">GMP data will appear here when available in the GMP sheet tab.</p>
+            </div>
+          </div>
+          <table class="ftbl">
+            <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Issue Price (Upper Band)</td><td id="gd-ip">—</td></tr>
+              <tr><td>Grey Market Premium (GMP)</td><td id="gd-gmp">—</td></tr>
+              <tr><td>Estimated Listing Price</td><td id="gd-est">—</td></tr>
+              <tr><td>Expected Listing Gain/Loss</td><td id="gd-pct">—</td></tr>
+              <tr><td>Kostak Rate (Per Application)</td><td id="gd-kostak">—</td></tr>
+              <tr><td>Subject to Sauda</td><td id="gd-sub">—</td></tr>
+              <tr><td>Last Updated</td><td id="gd-upd">Today</td></tr>
+            </tbody>
+          </table>
+          <div class="gmp-warn">⚠️ GMP is <strong>unofficial and unregulated</strong>. It is based on grey market activity and does not guarantee actual listing price. Do not base investment decisions solely on GMP data.</div>
+        </div>
+
+        <!-- TAB: FINANCIALS -->
+        <div class="dtc" id="dt-fin" style="display:none">
+          <div class="dsec">💹 Financial Highlights</div>
+          <div class="peer-note">💡 Financial data sourced from company DRHP/RHP. Add <strong>revenue_fy24, profit_fy24, revenue_fy23, profit_fy23, revenue_fy22, profit_fy22</strong> columns to your OpenIPOs sheet to populate this section.</div>
+          <table class="ftbl">
+            <thead><tr><th>Metric</th><th>FY 2024</th><th>FY 2023</th><th>FY 2022</th></tr></thead>
+            <tbody>
+              <tr><td>Revenue (₹ Cr)</td><td id="f-rev24">—</td><td id="f-rev23">—</td><td id="f-rev22">—</td></tr>
+              <tr><td>Net Profit (₹ Cr)</td><td id="f-prof24">—</td><td id="f-prof23">—</td><td id="f-prof22">—</td></tr>
+              <tr><td>EBITDA (₹ Cr)</td><td id="f-ebitda">—</td><td>—</td><td>—</td></tr>
+              <tr><td>EPS (₹)</td><td id="f-eps">—</td><td>—</td><td>—</td></tr>
+              <tr><td>Return on Equity (ROE)</td><td id="f-roe">—</td><td>—</td><td>—</td></tr>
+              <tr><td>Debt / Equity Ratio</td><td id="f-de">—</td><td>—</td><td>—</td></tr>
+              <tr><td>P/E Ratio (Post IPO)</td><td id="f-pe">—</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:20px">
+            <div class="dsec" style="margin-bottom:10px">Objects of the Issue</div>
+            <p id="d-objects" style="font-size:13px;color:var(--text2);line-height:1.8;background:var(--bg2);padding:14px;border-radius:9px;border:1px solid var(--border)">
+              Add an <strong>objects</strong> column to your OpenIPOs sheet to display how IPO funds will be used.
+            </p>
+          </div>
+          <div style="margin-top:16px">
+            <div class="dsec" style="margin-bottom:10px">📌 Anchor Investors</div>
+            <p id="d-anchor" style="font-size:13px;color:var(--text2);line-height:1.8;background:var(--bg2);padding:14px;border-radius:9px;border:1px solid var(--border)">
+              Add an <strong>anchor_investors</strong> column to your OpenIPOs sheet for anchor allocation details.
+            </p>
+          </div>
+        </div>
+
+        <!-- TAB: ABOUT -->
+        <div class="dtc" id="dt-about" style="display:none">
+          <div class="dsec">🏢 About the Company</div>
+          <p id="d-desc" style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px">Add a <strong>description</strong> column to your OpenIPOs Google Sheet to display company information here.</p>
+          <div class="dsec" style="margin-top:8px">📅 IPO Timeline</div>
+          <div class="tl" id="dtl">
+            <div class="tli"><div class="tld pend">1</div><div class="tl-date" id="tl-open-d">—</div><div class="tl-label">IPO Opens for Subscription</div></div>
+            <div class="tli"><div class="tld pend">2</div><div class="tl-date" id="tl-close-d">—</div><div class="tl-label">IPO Closes</div></div>
+            <div class="tli"><div class="tld pend">3</div><div class="tl-date" id="tl-allot-d">—</div><div class="tl-label">Allotment Finalisation</div><div class="tl-note">Shares allotted to successful applicants</div></div>
+            <div class="tli"><div class="tld pend">4</div><div class="tl-date" id="tl-refund-d">—</div><div class="tl-label">Refund Initiation</div><div class="tl-note">Refunds to unsuccessful applicants</div></div>
+            <div class="tli"><div class="tld pend">5</div><div class="tl-date" id="tl-demat-d">—</div><div class="tl-label">Shares Credited to Demat Account</div></div>
+            <div class="tli"><div class="tld pend">6</div><div class="tl-date" id="tl-list-d">—</div><div class="tl-label">Listing on BSE &amp; NSE 🎉</div><div class="tl-note" id="tl-list-note"></div></div>
+          </div>
+        </div>
+
+      </div><!-- /LEFT -->
+
+      <!-- RIGHT SIDEBAR -->
+      <div>
+        <!-- KEY NUMBERS -->
+        <div class="dsb-card">
+          <div class="dsb-title">📊 Subscription &amp; GMP</div>
+          <div style="padding:0">
+            <div class="dr" style="padding:10px 16px"><span class="dr-l">QIB Quota</span><span class="dr-v">50%</span></div>
+            <div class="dr" style="padding:10px 16px"><span class="dr-l">NII / HNI Quota</span><span class="dr-v">15%</span></div>
+            <div class="dr" style="padding:10px 16px"><span class="dr-l">Retail Quota</span><span class="dr-v">35%</span></div>
+            <div class="dr" style="padding:10px 16px"><span class="dr-l">Total Subscription</span><span class="dr-v" id="sk-sub">—</span></div>
+            <div class="dr" style="padding:10px 16px"><span class="dr-l">GMP Today</span><span class="dr-v" id="sk-gmp">—</span></div>
+            <div class="dr" style="padding:10px 16px"><span class="dr-l">Est. Listing Price</span><span class="dr-v" id="sk-est">—</span></div>
+            <div class="dr" style="padding:10px 16px;border:none"><span class="dr-l">Kostak Rate</span><span class="dr-v" id="sk-kostak">—</span></div>
+          </div>
+        </div>
+
+        <!-- QUICK LINKS -->
+        <div class="dsb-card">
+          <div class="dsb-title">⚡ Quick / Useful Links</div>
+          <ul class="dsbl">
+            <li><a href="ipo-gmp.html">View Latest IPO GMP <span>↗</span></a></li>
+            <li><a href="subscription.html">IPO Live Subscription <span>↗</span></a></li>
+            <li><a href="allotment.html">Check Allotment Status <span>↗</span></a></li>
+            <li><a href="upcoming-ipo.html">Upcoming IPOs 2025 <span>↗</span></a></li>
+            <li><a href="https://ipostatus.kfintech.com/" target="_blank">KFin Technologies <span>↗</span></a></li>
+            <li><a href="https://linkintime.co.in/mwal00/client.html" target="_blank">Link Intime India <span>↗</span></a></li>
+            <li><a href="https://www.nseindia.com/invest/ipo" target="_blank">Apply on NSE <span>↗</span></a></li>
+            <li><a href="https://www.bseindia.com/investorszone/ipo_application.html" target="_blank">Apply on BSE <span>↗</span></a></li>
+          </ul>
+        </div>
+
+        <!-- SHARE -->
+        <div class="dsb-card">
+          <div class="dsb-title">📤 Share This IPO</div>
+          <div class="share-row">
+            <button class="shr" onclick="doShare('whatsapp')">💬 WhatsApp</button>
+            <button class="shr" onclick="doShare('twitter')">🐦 Twitter</button>
+            <button class="shr" onclick="doShare('telegram')">✈️ Telegram</button>
+            <button class="shr" onclick="copyLink()">🔗 Copy</button>
+          </div>
+        </div>
+
+        <!-- APPLY -->
+        <button class="btn-primary" style="width:100%;padding:13px;font-size:14px;margin-bottom:14px" onclick="window.open('https://www.nseindia.com/invest/ipo','_blank')">Apply for IPO on NSE →</button>
+        <button class="btn-primary" style="width:100%;padding:13px;font-size:14px;background:linear-gradient(135deg,#10b981,#06b6d4)" onclick="alertFor(document.getElementById('dtitle').textContent)">🔔 Set Allotment Alert</button>
+      </div><!-- /RIGHT -->
+    </div><!-- /MAIN -->
+  </div><!-- /CONTENT -->
+</div><!-- /DW -->
+</main>
+<div id="site-footer"></div>
+<script src="config.js"></script>
+<script>
+var ipoName = getParam('name');
+
+// ── TABS ─────────────────────────────────────────────────────
+function dTab(id, btn) {
+  document.querySelectorAll('.dtab').forEach(function(b){ b.classList.remove('active'); });
+  ['ipo','sub','allot','gmp','fin','about'].forEach(function(t){ document.getElementById('dt-'+t).style.display='none'; });
+  btn.classList.add('active');
+  document.getElementById('dt-'+id).style.display = 'block';
+}
+
+// ── SAFE FILL ────────────────────────────────────────────────
+function fill(id, val) {
+  var el = document.getElementById(id);
+  if (el && val !== null && val !== undefined && val !== '' && val !== '—') el.textContent = val;
+}
+function fillLink(id, url, label) {
+  var el = document.getElementById(id);
+  if (el && url) el.innerHTML = '<a href="' + e(url) + '" target="_blank">' + (label||'Download ↗') + '</a>';
+}
+
+// ── SUMMARY ──────────────────────────────────────────────────
+function buildSummary(d, gmp) {
+  var name = d.name || ipoName;
+  var parts = [];
+
+  var s = '<strong>' + e(name) + ' IPO</strong>';
+  if (d.issue_size) s += ', an issue worth <strong>' + e(d.issue_size) + '</strong>,';
+
+  var open  = d.open_date  || d.expected_open  || '';
+  var close = d.close_date || d.expected_close || '';
+  if (open && close) s += ' was open from <strong>' + e(open) + '</strong> to <strong>' + e(close) + '</strong>';
+  if (d.listing_date) s += ' and listed on BSE, NSE on <strong>' + e(d.listing_date) + '</strong>';
+  s += '.';
+
+  if (d.price_band) {
+    var upper = parseFloat((d.price_band+'').split(/[-–]/).pop().replace(/[^\d.]/g,''))||0;
+    var lot   = parseInt(d.lot_size)||0;
+    if (d.ticker) s += ' The public issue (<strong>' + e(d.ticker) + '</strong>) was offered at <strong>' + e(d.price_band) + ' per share</strong>.';
+    if (upper && lot) s += ' Minimum investment for retail investors: <strong>₹' + (upper*lot).toLocaleString('en-IN') + '</strong> (1 lot = ' + lot + ' shares).';
+  }
+
+  if (d.listing_price && d.price_band) {
+    var ip  = parseFloat((d.price_band+'').split(/[-–]/).pop().replace(/[^\d.]/g,''))||0;
+    var lp  = parseFloat(d.listing_price)||0;
+    if (ip && lp) {
+      var diff = ((lp-ip)/ip*100).toFixed(2);
+      var pos  = lp >= ip;
+      s += ' The IPO listed at <strong>₹'+lp+'</strong>, resulting in a <strong style="color:'+(pos?'var(--green)':'var(--red)')+'">listing '+(pos?'gain of +':'loss of ')+diff+'%</strong>.';
+    }
+  }
+
+  return s;
+}
+
+// ── RECOMMENDATION ───────────────────────────────────────────
+function buildRec(rec) {
+  if (!rec) return;
+  var r = rec.toLowerCase();
+  var map = {
+    subscribe:   {cls:'rec-sub',   icon:'✅', label:'Subscribe'},
+    avoid:       {cls:'rec-avoid', icon:'❌', label:'Avoid'},
+    'may apply': {cls:'rec-may',   icon:'🟡', label:'May Apply'},
+    neutral:     {cls:'rec-neutral',icon:'⚪',label:'Neutral'},
+  };
+  var found = null;
+  Object.keys(map).forEach(function(k){ if(r.includes(k)) found=map[k]; });
+  if (!found) return;
+  document.getElementById('drec').innerHTML =
+    '<div class="drec ' + found.cls + '">' + found.icon + ' Recommendation: <strong>' + found.label + '</strong></div>';
+}
+
+// ── FILL ALL ─────────────────────────────────────────────────
+function fillAll(data) {
+  var d    = data.open || data.upcoming || {};
+  var gmp  = data.gmp  || null;
+  var subs = data.subs || [];
+  var name = d.name || ipoName;
+
+  // Meta
+  document.title = name + ' IPO Details 2025 – GMP, Allotment, Subscription | iporesult.in';
+  document.getElementById('dbname').textContent = name;
+  document.getElementById('dsec-title').textContent = name + ' IPO Details';
+
+  // Logo + title
+  var init = name.split(' ').slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase();
+  document.getElementById('dlogoi').textContent = init;
+  fill('dtitle', name);
+
+  // Status badge
+  var sb = document.getElementById('dsbadge');
+  if (d.listing_price) {
+    var ip = parseFloat((d.price_band||'').split(/[-–]/).pop().replace(/[^\d.]/g,''))||0;
+    var lp = parseFloat(d.listing_price)||0;
+    var pos = lp >= ip;
+    sb.textContent = pos ? 'Listed Positive' : 'Listed Negative';
+    sb.className   = 'dsb ' + (pos ? 'sb-pos' : 'sb-neg');
+  } else if (data.open) {
+    sb.textContent = (d.status||'Open').toUpperCase(); sb.className = 'dsb sb-open';
+  } else {
+    sb.textContent = 'Upcoming'; sb.className = 'dsb sb-up';
+  }
+
+  // Summary + recommendation
+  document.getElementById('dsummary').innerHTML = buildSummary(d, gmp);
+  buildRec(d.recommendation);
+
+  // 4 date cards
+  fill('dc-open',  d.open_date  || d.expected_open);
+  fill('dc-close', d.close_date || d.expected_close);
+  fill('dc-price', d.price_band);
+  fill('dc-list',  d.listing_date);
+
+  // Sidebar
+  if (gmp) {
+    var gv = parseFloat(gmp.gmp)||0;
+    var gmpTxt = (gv>=0?'+':'')+'₹'+gv;
+    document.getElementById('sk-gmp').textContent = gmpTxt;
+    document.getElementById('sk-gmp').style.color = gv>=0?'var(--green)':'var(--red)';
+    fill('sk-est',    gmp.estimated_listing ? '₹'+gmp.estimated_listing : null);
+    fill('sk-kostak', gmp.kostak ? '₹'+gmp.kostak : null);
+  }
+  if (subs && subs.length) {
+    var last = subs[subs.length-1];
+    if (last.total) document.getElementById('sk-sub').textContent = parseFloat(last.total).toFixed(2)+'x';
+  }
+
+  // IPO Details tab
+  fill('d-issuetype', d.issue_type || 'Book Built Issue');
+  fill('d-price',     d.price_band);
+  fill('d-face',      d.face_value ? '₹'+d.face_value : null);
+  fill('d-size',      d.issue_size);
+  fill('d-fresh',     d.fresh_issue);
+  fill('d-ofs',       d.ofs);
+  fill('d-lot',       d.lot_size ? d.lot_size+' Shares' : null);
+  fill('d-cat',       d.category);
+  fill('d-sector',    d.sector);
+  fill('d-reg',       d.registrar);
+  fill('d-lead',      d.lead_manager);
+  fill('d-bse',       d.bse_code);
+  fill('d-nse',       d.nse_symbol || d.ticker);
+  fill('d-open',      d.open_date || d.expected_open);
+  fill('d-close',     d.close_date || d.expected_close);
+  fill('d-allotd',    d.allotment_date);
+  fill('d-refund',    d.refund_date);
+  fill('d-demat',     d.demat_date);
+  fill('d-listd',     d.listing_date);
+  fill('d-mcap',      d.market_cap);
+  fill('d-pe',        d.pe_ratio ? d.pe_ratio+'x' : null);
+  fillLink('d-drhp',  d.drhp_url, 'Download DRHP ↗');
+  fillLink('d-rhp',   d.rhp_url,  'Download RHP ↗');
+
+  // Min investment calculations
+  var ub  = parseFloat((d.price_band||'').split(/[-–]/).pop().replace(/[^\d.]/g,''))||0;
+  var lot = parseInt(d.lot_size)||0;
+  if (ub && lot) {
+    fill('d-min',      '₹'+(ub*lot).toLocaleString('en-IN'));
+    fill('d-minhni',   '₹'+(ub*lot*2).toLocaleString('en-IN'));
+    fill('q-rii-lots', '1 Lot ('+lot+' shares)');
+    fill('q-nii-lots', '2 Lots ('+(lot*2)+' shares)');
+    fill('q-bhni-lots','15 Lots ('+(lot*15)+' shares)');
+    fill('q-rii-min',  '₹'+(ub*lot).toLocaleString('en-IN'));
+    fill('q-nii-min',  '₹'+(ub*lot*2).toLocaleString('en-IN'));
+    fill('q-bhni-min', '₹'+(ub*lot*15).toLocaleString('en-IN'));
+  }
+
+  // GMP tab
+  if (gmp) {
+    var gv2  = parseFloat(gmp.gmp)||0;
+    var ip2  = parseFloat((gmp.ipo_price||'').toString().replace(/[^\d.]/g,''))||0;
+    var est2 = parseFloat(gmp.estimated_listing)||0;
+    var pct2 = ip2>0 ? ((gv2/ip2)*100).toFixed(2) : null;
+    var sig  = gv2>30?'🔥 Strong Buy Signal':gv2>10?'✅ Positive Signal':gv2>0?'🟡 Mild Positive':gv2<0?'🔴 Negative Signal':'⚪ No GMP Data';
+    var sigBg = gv2>0?'rgba(16,185,129,.12);color:var(--green)':gv2<0?'rgba(239,68,68,.12);color:var(--red)':'rgba(99,120,255,.1);color:var(--text3)';
+
+    document.getElementById('gmp-num').textContent = (gv2>=0?'+':'')+'₹'+gv2;
+    document.getElementById('gmp-num').style.color = gv2>=0?'var(--green)':'var(--red)';
+    document.getElementById('gmp-sig').textContent = sig;
+    document.getElementById('gmp-sig').style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:50px;font-size:12px;font-weight:700;margin-top:8px;background:'+sigBg;
+    document.getElementById('gmp-desc').textContent = 'Grey market traders are currently pricing '+(d.name||ipoName)+' shares at a '+(gv2>=0?'premium':'discount')+' of ₹'+Math.abs(gv2)+' over the issue price.';
+    document.getElementById('gd-ip').textContent    = gmp.ipo_price ? '₹'+gmp.ipo_price : '—';
+    document.getElementById('gd-gmp').innerHTML     = '<span style="color:'+(gv2>=0?'var(--green)':'var(--red)');font-weight:700">'+(gv2>=0?'+':'')+'₹'+gv2+'</span>';
+    document.getElementById('gd-est').textContent   = est2 ? '₹'+est2 : '—';
+    if (pct2) { document.getElementById('gd-pct').innerHTML = '<span style="color:'+(gv2>=0?'var(--green)':'var(--red)')+';font-weight:700">'+(gv2>=0?'+':'')+pct2+'%</span>'; }
+    fill('gd-kostak', gmp.kostak ? '₹'+gmp.kostak : null);
+    fill('gd-sub',    gmp.subject);
+    fill('gd-upd',    gmp.last_updated || 'Today');
+  }
+
+  // Financials tab
+  fill('f-rev24',  d.revenue_fy24);
+  fill('f-rev23',  d.revenue_fy23);
+  fill('f-rev22',  d.revenue_fy22);
+  fill('f-prof24', d.profit_fy24);
+  fill('f-prof23', d.profit_fy23);
+  fill('f-prof22', d.profit_fy22);
+  fill('f-ebitda', d.ebitda);
+  fill('f-eps',    d.eps);
+  fill('f-roe',    d.roe ? d.roe+'%' : null);
+  fill('f-de',     d.de_ratio);
+  fill('f-pe',     d.pe_ratio ? d.pe_ratio+'x' : null);
+  if (d.objects)          document.getElementById('d-objects').textContent  = d.objects;
+  if (d.anchor_investors) document.getElementById('d-anchor').textContent   = d.anchor_investors;
+
+  // About + timeline
+  if (d.description) document.getElementById('d-desc').textContent = d.description;
+  fill('tl-open-d',  d.open_date  || d.expected_open);
+  fill('tl-close-d', d.close_date || d.expected_close);
+  fill('tl-allot-d', d.allotment_date);
+  fill('tl-refund-d',d.refund_date);
+  fill('tl-demat-d', d.demat_date);
+  fill('tl-list-d',  d.listing_date);
+  if (d.listing_price) fill('tl-list-note', 'Listing price: ₹'+d.listing_price);
+
+  // Timeline dots — mark done vs pending
+  var today = new Date(); today.setHours(0,0,0,0);
+  var tldots = document.querySelectorAll('.tld');
+  var tldates = [d.open_date||d.expected_open, d.close_date||d.expected_close, d.allotment_date, d.refund_date, d.demat_date, d.listing_date];
+  tldates.forEach(function(dt,i){
+    if (!dt || !tldots[i]) return;
+    var d2 = new Date(dt);
+    if (isNaN(d2)) return;
+    d2.setHours(0,0,0,0);
+    tldots[i].className = 'tld ' + (d2 < today ? 'done' : d2.getTime()===today.getTime() ? 'now' : 'pend');
+  });
+
+  // Subscription tab
+  if (subs && subs.length) fillSubs(subs);
+
+  // Show page
+  document.getElementById('dload').style.display   = 'none';
+  document.getElementById('dcontent').style.display = 'block';
+}
+
+// ── SUBSCRIPTION ─────────────────────────────────────────────
+function fillSubs(rows) {
+  var last = rows[rows.length-1]||{};
+  function setBar(vid,bid,v,color){
+    var val=parseFloat(v)||0;
+    document.getElementById(vid).textContent=val>0?val.toFixed(2)+'x':'—';
+    setTimeout(function(){document.getElementById(bid).style.width=Math.min(100,(val/5)*100)+'%';},100);
+  }
+  setBar('sq-qib','sb-qib',last.qib,'var(--accent)');
+  setBar('sq-nii','sb-nii',last.nii,'var(--green)');
+  setBar('sq-rii','sb-rii',last.rii,'var(--orange)');
+  setBar('sq-tot','sb-tot',last.total,'linear-gradient(90deg,var(--accent),var(--accent2))');
+  document.getElementById('subrows').innerHTML=rows.map(function(r){
+    var tot=parseFloat(r.total)||0;
+    return '<tr><td>Day '+e(r.day)+'</td>'
+      +'<td class="'+(parseFloat(r.qib)>=1?'up':'')+'">'+(r.qib?parseFloat(r.qib).toFixed(2)+'x':'—')+'</td>'
+      +'<td class="'+(parseFloat(r.nii)>=1?'up':'')+'">'+(r.nii?parseFloat(r.nii).toFixed(2)+'x':'—')+'</td>'
+      +'<td class="'+(parseFloat(r.rii)>=1?'up':'')+'">'+(r.rii?parseFloat(r.rii).toFixed(2)+'x':'—')+'</td>'
+      +'<td>'+(r.employee?parseFloat(r.employee).toFixed(2)+'x':'—')+'</td>'
+      +'<td class="'+(tot>=1?'up':'')+'" style="font-weight:700">'+(tot>0?tot.toFixed(2)+'x':'—')+'</td></tr>';
+  }).join('');
+}
+
+// ── ALLOTMENT ────────────────────────────────────────────────
+function doAllot(){
+  var by=document.getElementById('allotBy').value,val=document.getElementById('fieldVal').value.trim().toUpperCase();
+  if(!val)return showMsg('allotResult','warn','⚠️ Please enter your '+by.toUpperCase()+'.');
+  if(by==='pan'&&!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(val))return showMsg('allotResult','error','❌ Invalid PAN. Format: ABCDE1234F');
+  showMsg('allotResult','loading','Checking allotment…');
+  setTimeout(function(){showMsg('allotResult','info','<strong>'+e(ipoName)+'</strong> — '+by.toUpperCase()+': <strong>'+val+'</strong><br><br>Check on official registrar:<br><a href="https://ipostatus.kfintech.com/" target="_blank" style="color:var(--accent);font-weight:600">→ KFin Technologies</a>&nbsp;&nbsp;<a href="https://linkintime.co.in/mwal00/client.html" target="_blank" style="color:var(--accent);font-weight:600">→ Link Intime India</a>');},600);
+}
+
+// ── SHARE ────────────────────────────────────────────────────
+function doShare(p){var url=encodeURIComponent(window.location.href),txt=encodeURIComponent((ipoName||'IPO')+' IPO – GMP, Allotment & Subscription | iporesult.in');var links={whatsapp:'https://wa.me/?text='+txt+'%20'+url,twitter:'https://twitter.com/intent/tweet?text='+txt+'&url='+url,telegram:'https://t.me/share/url?url='+url+'&text='+txt};window.open(links[p],'_blank');}
+function copyLink(){navigator.clipboard?navigator.clipboard.writeText(window.location.href).then(function(){alert('✅ Link copied!');}).catch(function(){alert(window.location.href);}):alert(window.location.href);}
+
+// ── BOOT ─────────────────────────────────────────────────────
+document.addEventListener('shellReady', function() {
+  if (!ipoName) {
+    document.getElementById('dload').innerHTML='<p style="color:var(--red)">⚠️ No IPO name in URL.<br>Use: <code>ipo-detail.html?name=Company+Name</code></p>';
+    return;
+  }
+  // ★ Single fast GAS call instead of 4 parallel calls
+  getIPODetail(ipoName).then(function(data){
+    if (!data.open && !data.upcoming) {
+      document.getElementById('dload').innerHTML='<p style="color:var(--orange)">⚠️ No data found for <strong>"'+e(ipoName)+'"</strong>.<br><br>Make sure the name exactly matches the <b>name</b> column in your Google Sheet.</p>';
+      return;
+    }
+    fillAll(data);
+  }).catch(function(err){
+    document.getElementById('dload').innerHTML='<p style="color:var(--red)">❌ Failed to load: '+err.message+'</p>';
+  });
+});
+</script>
+</body>
+</html>
