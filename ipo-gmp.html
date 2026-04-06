@@ -71,7 +71,7 @@ function renderGMPTable(rows){
   }).join('');
 }
 function filterGMP(){var q=(document.getElementById('gmpSearch').value||'').toLowerCase(),f=document.getElementById('gmpFilter').value;var res=_all.filter(function(r){var nm=(r.company||'').toLowerCase(),gmp=parseFloat(r.gmp)||0;return(!q||nm.includes(q))&&(f==='positive'?gmp>0:f==='negative'?gmp<0:true);});renderGMPTable(res);}
-document.addEventListener('shellReady',function(){
+document.addEventListener('DOMContentLoaded',function(){
   buildMarketStrip('GMP Updated','Live');
   gasGet('getGMP').then(function(data){_all=Array.isArray(data)?data:[];renderGMPTable(_all);renderTicker(_all);});
 });
