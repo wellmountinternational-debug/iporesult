@@ -62,7 +62,7 @@ function checkAllotment(){
   showMsg('allotResult','loading','Checking allotment for <strong>'+e(ipo)+'</strong>…');
   setTimeout(function(){showMsg('allotResult','info','<strong>🎯 Allotment Check: '+e(ipo)+'</strong><br><br>Your PAN: <strong>'+val+'</strong><br><br>Please check on the official registrar site:<br><br><a href="https://ipostatus.kfintech.com/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:8px;font-weight:600;margin-right:10px;margin-top:8px">🔗 KFin Technologies</a><a href="https://linkintime.co.in/mwal00/client.html" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;background:var(--card2);color:var(--text);border:1px solid var(--border);border-radius:8px;font-weight:600;margin-top:8px">🔗 Link Intime India</a>');},700);
 }
-document.addEventListener('shellReady',function(){
+document.addEventListener('DOMContentLoaded',function(){
   buildMarketStrip('Allotment Check','Live');
   gasGet('getOpenIPOs').then(function(data){
     var rows=Array.isArray(data)?data:[];
