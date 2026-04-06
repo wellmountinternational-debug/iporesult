@@ -48,7 +48,6 @@ var HEADER_HTML = [
 '<li><a href="news.html">News</a></li>',
 '</ul>',
 '<div class="nav-right">',
-'<span class="last-updated" id="navLastUpdated" title="Data last updated">🕐 Loading…</span>',
 '<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark/light mode">🌙</button>',
 '<button class="hamburger" id="hamburgerBtn" onclick="openDrawer()"><span></span><span></span><span></span></button>',
 '</div>',
@@ -113,9 +112,6 @@ var FOOTER_HTML = [
     var theme = document.documentElement.getAttribute('data-theme') || 'dark';
     var btn = document.getElementById('themeToggle');
     if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
-
-    // Set last updated timestamp
-    setLastUpdated();
 
     // Mark active nav link
     var page = window.location.pathname.split('/').pop() || 'index.html';
