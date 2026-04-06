@@ -47,7 +47,7 @@
 
 var _subs=[];
 function setTab(btn,day){document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');var rows=day==='all'?_subs:_subs.filter(function(r){return String(r.day)===String(day);});renderSubTable(rows);}
-document.addEventListener('shellReady',function(){
+document.addEventListener('DOMContentLoaded',function(){
   buildMarketStrip('Subscription','Live Data');
   gasGet('getSubs').then(function(data){_subs=Array.isArray(data)?data:[];var d1=_subs.filter(function(r){return String(r.day)==='1';});renderSubTable(d1.length?d1:_subs);});
 });
