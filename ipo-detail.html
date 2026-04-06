@@ -691,7 +691,9 @@ function doShare(p){var url=encodeURIComponent(window.location.href),txt=encodeU
 function copyLink(){navigator.clipboard?navigator.clipboard.writeText(window.location.href).then(function(){alert('✅ Link copied!');}).catch(function(){alert(window.location.href);}):alert(window.location.href);}
 
 // ── BOOT ─────────────────────────────────────────────────────
-document.addEventListener('shellReady', function() {
+// Use window.onload — does NOT depend on shellReady.
+// Data loads even if header/footer injection fails.
+function _bootDetail() {
   if (!ipoName) {
     document.getElementById('dload').innerHTML='<p style="color:var(--red)">⚠️ No IPO name in URL.<br>Use: <code>ipo-detail.html?name=Company+Name</code></p>';
     return;
@@ -699,57 +701,33 @@ document.addEventListener('shellReady', function() {
 
   document.getElementById('dbname').textContent = decodeURIComponent(ipoName);
 
-  // ★ FIX: show progress so user knows it's loading, not frozen
-  var loadEl = document.getElementById('dload');
-  loadEl.innerHTML = '<div class="dspin"></div><p style="color:var(--text3);font-size:13px">Loading <strong style="color:var(--text)">' + e(decodeURIComponent(ipoName)) + '</strong> IPO data…</p>';
-
-  // ★ FIX: 14-second UI-level timeout — if GAS never responds, show error
-  var uiTimer = setTimeout(function() {
-    loadEl.innerHTML =
-      '<p style="color:var(--red);font-weight:600">⏱️ Request timed out</p>'
-      + '<p style="color:var(--text2);font-size:13px;margin-top:8px;line-height:1.8">'
-      + 'Could not reach the Google Apps Script backend. Common causes:</p>'
-      + '<ol style="color:var(--text2);font-size:13px;line-height:2.2;padding-left:18px;margin-top:8px">'
-      + '<li>GAS Web App not deployed — go to Apps Script → Deploy → Manage Deployments</li>'
-      + '<li>Access not set to <strong>"Anyone"</strong> — re-deploy with <em>Execute as: Me</em>, <em>Who has access: Anyone</em></li>'
-      + '<li>Wrong <code>GAS_URL</code> in <strong>config.js</strong></li>'
-      + '<li>Google account auth required — open the GAS URL directly in a new tab to authorize</li>'
-      + '</ol>'
-      + '<p style="margin-top:12px"><a href="' + GAS_URL + '?action=ping" target="_blank" style="color:var(--accent);font-weight:600">→ Test GAS URL directly ↗</a></p>'
-      + '<a href="index.html" style="display:inline-block;margin-top:12px;color:var(--accent)">← Go back home</a>';
-  }, 14000);
-
   getIPODetail(ipoName).then(function(data){
-    clearTimeout(uiTimer);
-
-    // Not found — show helpful message
     if (!data || (!data.open && !data.upcoming)) {
-      loadEl.innerHTML =
+      document.getElementById('dload').innerHTML =
         '<div style="max-width:500px;margin:0 auto;text-align:left">'
         + '<p style="color:var(--orange);font-size:15px;font-weight:600;margin-bottom:12px">⚠️ No data found for: <strong>"' + e(decodeURIComponent(ipoName)) + '"</strong></p>'
-        + '<p style="color:var(--text2);font-size:13px;line-height:1.8">This IPO is not in your Google Sheet yet. To add it:</p>'
-        + '<ol style="color:var(--text2);font-size:13px;line-height:2.2;padding-left:18px;margin-top:8px">'
-        + '<li>Open your Google Sheet → <strong>OpenIPOs</strong> or <strong>UpcomingIPOs</strong> tab</li>'
-        + '<li>Add a new row with <strong>name</strong> = <code style="background:var(--bg2);padding:2px 6px;border-radius:4px">' + e(decodeURIComponent(ipoName)) + '</code></li>'
-        + '<li>Fill in the other columns (price_band, open_date, etc.)</li>'
-        + '<li>Run <strong>clearCache()</strong> in Apps Script, then refresh this page</li>'
-        + '</ol>'
+        + '<p style="color:var(--text2);font-size:13px;line-height:1.8">Make sure the name in the URL <strong>exactly matches</strong> the <b>name</b> column in your Google Sheet (case-sensitive, spaces included).</p>'
+        + '<p style="color:var(--text2);font-size:13px;margin-top:8px">URL name: <code style="background:var(--bg2);padding:2px 8px;border-radius:4px;color:var(--accent)">' + e(decodeURIComponent(ipoName)) + '</code></p>'
         + '<a href="upcoming-ipo.html" style="display:inline-block;margin-top:16px;padding:10px 20px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:9px;font-weight:600;font-size:13px">← Back to IPO List</a>'
         + '</div>';
       return;
     }
-
     fillAll(data);
-
   }).catch(function(err){
-    clearTimeout(uiTimer);
-    loadEl.innerHTML =
-      '<p style="color:var(--red)">❌ Failed to load IPO data.<br>'
-      + '<small style="color:var(--text3)">' + e(err.message) + '</small></p>'
-      + '<p style="margin-top:12px"><a href="' + GAS_URL + '?action=ping" target="_blank" style="color:var(--accent);font-weight:600">→ Test GAS connection ↗</a></p>'
-      + '<a href="index.html" style="color:var(--accent);display:block;margin-top:8px">← Go back home</a>';
+    document.getElementById('dload').innerHTML =
+      '<p style="color:var(--red)">❌ Failed to load IPO data.<br><small style="color:var(--text3)">' + err.message + '</small><br><br>'
+      + '<a href="index.html" style="color:var(--accent)">← Go back home</a></p>';
   });
-});
+}
+
+// Fire on DOMContentLoaded — never wait for shellReady
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _bootDetail);
+} else {
+  _bootDetail();
+}
+// Also listen for shellReady (updates nav active state, that's all)
+document.addEventListener('shellReady', function() {});
 </script>
 </body>
 </html>
