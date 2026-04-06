@@ -4,7 +4,7 @@
    No file fetching. Works everywhere: Hostinger, GitHub, localhost.
    ═══════════════════════════════════════════════════════════════ */
 
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbzXmyGZBJwN7ImsBb3NXpso5A33UbPDoubKsxtdlMnpb9QXb0mNGfvVsZEV8VY4DFQT/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbzLuojwRcI2rUcdhYJyU6dDin4mIBZV5kk6b2lLOGVN-y-2Ed5ALQ1165Sja4B2Tw8r/exec';
 
 var GRADS = [['#4f6ef7','#7c3aed'],['#f59e0b','#ef4444'],['#10b981','#06b6d4'],['#ec4899','#8b5cf6'],['#f97316','#eab308'],['#06b6d4','#3b82f6']];
 var NEWS_ICONS = {Analysis:'📈',News:'🏦',Upcoming:'📅',Policy:'⚖️',Market:'📊',Default:'📰'};
