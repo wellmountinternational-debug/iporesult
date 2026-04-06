@@ -68,7 +68,7 @@ function filterCards(){
   renderCards(filtered);renderTableView(filtered);
 }
 function setView(v,btn){document.querySelectorAll('.vt-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');document.getElementById('cardsView').style.display=v==='cards'?'grid':'none';document.getElementById('tableView').style.display=v==='table'?'block':'none';}
-document.addEventListener('shellReady',function(){
+document.addEventListener('DOMContentLoaded',function(){
   buildMarketStrip('Upcoming IPOs','Live');
   gasGet('getUpcoming').then(function(data){_all=Array.isArray(data)?data:[];renderCards(_all);renderTableView(_all);document.getElementById('filterCount').textContent=_all.length+' IPOs';buildMarketStrip('Upcoming IPOs',_all.length+' Listed');});
 });
