@@ -79,7 +79,7 @@ function applyFilters(){
   renderFeatured(res[0]||null);renderNewsGrid(res.slice(1),'newsGrid');
 }
 function filterByCat(cat,btn){_activeCat=cat;document.querySelectorAll('.pill').forEach(function(p){p.classList.remove('active');});btn.classList.add('active');applyFilters();}
-document.addEventListener('shellReady',function(){
+document.addEventListener('DOMContentLoaded',function(){
   buildMarketStrip('IPO News','Latest');
   gasGet('getNews').then(function(data){_news=Array.isArray(data)?data:[];renderFeatured(_news[0]||null);renderNewsGrid(_news.slice(1),'newsGrid');renderTrending(_news);});
 });
